@@ -7,6 +7,7 @@ export default function Search({ onSearch }) {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent form submission
     onSearch(city); // Call the onSearch function passed from parent component with the entered city
+    setCity(""); // Clear the city value after submission
   };
 
   return (
