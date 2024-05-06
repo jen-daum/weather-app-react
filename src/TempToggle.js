@@ -1,15 +1,22 @@
+// TempToggle.js
 import React from "react";
 
-export default function TempToggle({ onToggle }) {
+export default function TempToggle({ unit, onToggle }) {
   return (
     <div className="units">
-      <a href="#" className="lightened-units" onClick={() => onToggle("C")}>
+      <span
+        className={unit === "C" ? "lightened-units" : "darkened-units"}
+        onClick={() => onToggle("C")}
+      >
         °C
-      </a>{" "}
+      </span>{" "}
       |
-      <a href="#" className="darkened-units" onClick={() => onToggle("F")}>
+      <span
+        className={unit === "F" ? "lightened-units" : "darkened-units"}
+        onClick={() => onToggle("F")}
+      >
         °F
-      </a>
+      </span>
     </div>
   );
 }

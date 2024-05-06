@@ -1,22 +1,24 @@
-import React from "react";
+// Search.js
+import React, { useState } from "react";
 
 export default function Search({ onSearch }) {
+  const [city, setCity] = useState(""); // State to hold the entered city
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent form submission
+    onSearch(city); // Call the onSearch function passed from parent component with the entered city
+  };
+
   return (
-    <div className="search-bar">
-      <form id="input-form">
+    <div className="search">
+      <form onSubmit={handleSubmit}>
         <input
-          className="form-control"
-          list="datalistOptions"
-          id="DataList"
-          placeholder="Type to search..."
+          type="text"
+          placeholder="Enter city name..."
+          value={city}
+          onChange={(e) => setCity(e.target.value)} // Update city state as the user types
         />
-        <datalist id="datalistOptions">
-          <option value="Current location"></option>
-          <option value="New York"></option>
-          <option value="Madrid"></option>
-          <option value="Paris"></option>
-          <option value="London"></option>
-        </datalist>
+        <button type="submit">Search</button>
       </form>
     </div>
   );

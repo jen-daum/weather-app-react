@@ -6,7 +6,11 @@ export default function Footer() {
     <footer>
       <div className="footer-box">
         <span className="code-by">Coded by Jennifer DAUM</span>
-        <a href="https://github.com/jen-daum/weather-app" target="_blank">
+        <a
+          href="https://github.com/jen-daum/weather-app"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img src={Image} alt="GitHub" className="github-logo" />
         </a>
       </div>

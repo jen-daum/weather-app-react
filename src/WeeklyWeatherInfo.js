@@ -1,22 +1,28 @@
 import React from "react";
+import moment from "moment";
 
-export default function WeeklyWeatherInfo({ data }) {
+export default function WeeklyWeatherInfo({ props }) {
   // Function to generate forecast items from forecast data
-  function generateForecastItems(forecastData) {
+  function generateForecastItems() {
     let forecastItems = [];
-    if (!Array.isArray(forecastData)) {
-      // Check if forecastData is definitely an array
+    if (!Array.isArray(props)) {
+      // Check if data is definitely an array
       return forecastItems; // Return empty array if not
     }
-    for (let dayData of forecastData) {
+    for (let dayData of props) {
+      // Extract necessary properties
+      let { condition, time } = dayData;
+      let date = moment(time * 1000).format("DD/MM");
+      let day = moment(time * 1000).format("ddd");
+
       forecastItems.push(
-        <div key={dayData.date} className="col-2">
+        <div key={time} className="col-2">
           <ul>
-            <li className="next-day-day">{dayData.day}</li>
+            <li className="next-day-day">{day}</li>
             <li className="next-day-icon">
-              <img src={dayData.iconUrl} alt="Forecast icon" width="45" />
+              <img src={condition.icon_url} alt="Forecast icon" width="45" />
             </li>
-            <li className="next-day-date">{dayData.date}</li>
+            <li className="next-day-date">{date}</li>
           </ul>
         </div>
       );
@@ -24,7 +30,7 @@ export default function WeeklyWeatherInfo({ data }) {
     return forecastItems;
   }
 
-  const forecastItems = generateForecastItems(data);
+  const forecastItems = generateForecastItems();
 
   return (
     <div id="forecast" className="row">
