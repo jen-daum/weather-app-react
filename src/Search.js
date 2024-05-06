@@ -10,16 +10,32 @@ export default function Search({ onSearch }) {
   };
 
   return (
-    <div className="search">
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter city name..."
-          value={city}
-          onChange={(e) => setCity(e.target.value)} // Update city state as the user types
-        />
-        <button type="submit">Search</button>
-      </form>
+    <div className="row search-bar">
+      <div className="col align-self-center">
+        <form id="input-form" onSubmit={handleSubmit}>
+          <div className="input-group">
+            <input
+              className="form-control"
+              list="datalistOptions"
+              id="DataList"
+              placeholder="Type to search..."
+              type="text"
+              value={city}
+              onChange={(e) => setCity(e.target.value)} // Update city state as the user types
+            />
+            <datalist id="datalistOptions">
+              <option id="currentLocation" value="Current location"></option>
+              <option value="New York"></option>
+              <option value="Madrid"></option>
+              <option value="Paris"></option>
+              <option value="London"></option>
+            </datalist>
+            <button className="btn btn-outline-secondary" type="submit">
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

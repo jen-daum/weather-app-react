@@ -17,14 +17,14 @@ function App() {
     setLoading(true);
     try {
       const apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`;
-      console.log("API URL:", apiUrl); // Print API call link
+      //console.log("API URL:", apiUrl);
       const response = await axios.get(apiUrl);
-      setWeatherData(response.data);
+      setWeatherData(response.data); //TODO: clear the search bar
       setLoading(false);
       setError(null);
     } catch (error) {
       console.error("Error fetching weather data:", error);
-      setError("Error fetching weather data. Please try again.");
+      setError("Error fetching weather data. Please try again."); //TODO when city is wrong catch error also
       setLoading(false);
     }
   };
@@ -38,7 +38,8 @@ function App() {
         {weatherData && (
           <>
             <h1>
-              {weatherData.city}, {weatherData.country}
+              {weatherData.city}, {weatherData.country}{" "}
+              {/*TODO maybe use the User city to avoid long city name, also just two digits country?*/}
             </h1>
             <MainWeatherInfo data={weatherData.daily[0]} />
             <div className="separator"></div>
