@@ -19,7 +19,7 @@ export default function Search({ onSearch }) {
               className="form-control"
               list="datalistOptions"
               id="DataList"
-              placeholder="Type to search..."
+              placeholder="Type a city :)"
               type="text"
               value={city}
               onChange={(e) => setCity(e.target.value)} // Update city state as the user types
