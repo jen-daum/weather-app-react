@@ -100,11 +100,12 @@ footer {
 }
 
 .darkened-units {
-  color: rgb(172, 172, 172);
+  color: rgb(87, 106, 110);
 }
 .lightened-units {
   color: aliceblue;
   cursor: default;
+  font-size: 25px;
 }
 .form-control {
   font-size: 12px;

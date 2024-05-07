@@ -59,11 +59,11 @@ export default function MainWeatherInfo({ data }) {
         {/* Toggle temperature unit */}
         <div className="col text-start units">
           <a href="#" className={tempClassC} onClick={() => handleToggle("C")}>
-            °C
+            C
           </a>{" "}
           |{" "}
           <a href="#" className={tempClassF} onClick={() => handleToggle("F")}>
-            °F
+            F
           </a>
         </div>
       </div>
