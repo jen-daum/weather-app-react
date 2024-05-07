@@ -58,13 +58,13 @@ export default function MainWeatherInfo({ data }) {
         </span>
         {/* Toggle temperature unit */}
         <div className="col text-start units">
-          <a href="#" className={tempClassC} onClick={() => handleToggle("C")}>
+          <button className={tempClassC} onClick={() => handleToggle("C")}>
             C
-          </a>{" "}
-          |{" "}
-          <a href="#" className={tempClassF} onClick={() => handleToggle("F")}>
+          </button>{" "}
+          |
+          <button className={tempClassF} onClick={() => handleToggle("F")}>
             F
-          </a>
+          </button>
         </div>
       </div>
       {/* Display min and max temperature */}
