@@ -1,9 +1,30 @@
-// MainWeatherInfo.js
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
-import TempToggle from "./TempToggle";
 
 export default function MainWeatherInfo({ data }) {
+  const [unit, setUnit] = useState("C");
+
+  // Function to convert temperature from Celsius to Fahrenheit
+  const convertToFahrenheit = (celsius) => {
+    return (celsius * 9) / 5 + 32;
+  };
+
+  // Function to handle temperature unit toggle
+  const handleToggle = (targetUnit) => {
+    setUnit(targetUnit);
+  };
+
+  // Function to get the temperature based on the selected unit
+  const getTemperature = (celsius) => {
+    return unit === "C"
+      ? Math.round(celsius)
+      : Math.round(convertToFahrenheit(celsius));
+  };
+
+  // Determine the color of the temperature links based on the selected unit
+  const tempClassC = unit === "C" ? "lightened-units" : "darkened-units";
+  const tempClassF = unit === "F" ? "lightened-units" : "darkened-units";
+
   return (
     <div className="weather-info">
       {/* Display current date and time */}
@@ -33,17 +54,23 @@ export default function MainWeatherInfo({ data }) {
       {/* Display current temperature */}
       <div className="row main-temp-block">
         <span id="mainTemp" className="col text-end main-temp">
-          {Math.round(data.temperature.day)}°
+          {getTemperature(data.temperature.day)}°
         </span>
-        {/* Pass temperature unit and onToggle function to TempToggle */}
-        <span className="col text-start units">
-          <TempToggle unit="C" onToggle={() => {}} />
-        </span>
+        {/* Toggle temperature unit */}
+        <div className="col text-start units">
+          <a href="#" className={tempClassC} onClick={() => handleToggle("C")}>
+            °C
+          </a>{" "}
+          |{" "}
+          <a href="#" className={tempClassF} onClick={() => handleToggle("F")}>
+            °F
+          </a>
+        </div>
       </div>
       {/* Display min and max temperature */}
       <div className="row min-max-container">
-        <span id="min-temp">{Math.round(data.temperature.minimum)}°C</span>
-        <span id="max-temp">{Math.round(data.temperature.maximum)}°C</span>
+        <span id="min-temp">{getTemperature(data.temperature.minimum)}°</span>
+        <span id="max-temp">{getTemperature(data.temperature.maximum)}°</span>
       </div>
       {/* Display weather description */}
       <div className="row sentence-weather">{data.condition.description}</div>
