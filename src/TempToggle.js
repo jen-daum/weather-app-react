@@ -8,9 +8,9 @@ export default function TempToggle({ unit, onToggle }) {
     }
   };
 
-  const convertToFahrenheit = (celsius) => {
-    return (celsius * 9) / 5 + 32;
-  };
+  //const convertToFahrenheit = (celsius) => {
+  // return (celsius * 9) / 5 + 32;
+  // }; TODO
 
   return (
     <div className="units">
