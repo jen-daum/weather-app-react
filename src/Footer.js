@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "./images/pinned-octocat.svg";
+import { AiFillGithub } from "react-icons/ai";
 
 export default function Footer() {
   return (
@@ -11,7 +11,7 @@ export default function Footer() {
           target="_blank"
           rel="noreferrer"
         >
-          <img src={Image} alt="GitHub" className="github-logo" />
+          <AiFillGithub style={{ color: "black" }} />
         </a>
       </div>
     </footer>
